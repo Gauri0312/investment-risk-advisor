@@ -4,7 +4,9 @@ from tools.risk_tool import calculate_risk
 import re
 
 # Initialize Gemini Client
-client = genai.Client(api_key="AIzaSyBjruXG-lJP5gXWuixeCSIoASwAWhc04hM")
+client = genai.Client(
+    api_key=os.getenv("GEMINI_API_KEY")
+)
 
 def extract_numbers(text):
     """Extract age, salary, expenses, savings from message."""
