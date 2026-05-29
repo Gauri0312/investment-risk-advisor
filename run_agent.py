@@ -32,12 +32,26 @@ def generate_investment_advice(age, salary, expenses, savings, risk):
     - Gold/FD/PPF recommendations
     - Reasoning behind each allocation
     """
+def generate_investment_advice(age, salary, expenses, savings, risk):
+    try:
+        prompt = f"""
+User Financial Summary:
+- Age: {age}
+- Salary: {salary}
+- Expenses: {expenses}
+- Savings: {savings}
+- Risk Profile: {risk}
+"""
 
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt
-    )
-    return response.text
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
+
+        return response.text
+
+    except Exception as e:
+        return f"ERROR: {e}"
 
 def run_agent():
     print("\n📈 FinTech Investment Advisor Agent")
